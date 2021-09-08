@@ -107,67 +107,74 @@ export default function Seating() {
       <div className="main-content">
         <div className="movie-ticket-wrapper">
           <div className="movie-section">
-            <img
-              className="movie-section__photo"
-              src={moviePhoto}
-              alt=""
-              srcSet=""
-            />
-            <div className="movie-section__details">
-              <div className="movie-headline">
-                <div className="movie-genre">ACTION / SCI-FI</div>
-                <div className="movie-title">Incpetion</div>
-              </div>
-              <div className="movie-ticket-info">
-                <div className="movie-showtime">
-                  <div className="movie-showtime__header">SHOWTIME</div>
-                  <div className="movie-showtime__details">
-                    <span className="movie-showtime__cinema">
-                      Abc Cinema Palace &#10072;
-                    </span>
-                    <span className="movie-showtime__time">
-                      <span className="date"> Mar 8, 6:00pm</span>
-                    </span>
-                  </div>
-                  <button className="btn btn--sm btn--outlined btn--rounded btn--blue movie-showtime__btn">
-                    Change
-                  </button>
+            <div className="section">
+              <img
+                className="movie-section__photo"
+                src={moviePhoto}
+                alt=""
+                srcSet=""
+              />
+              <div className="movie-section__details">
+                <div className="movie-headline">
+                  <div className="movie-genre">ACTION / SCI-FI</div>
+                  <div className="movie-title">Inception</div>
                 </div>
-                <div className="movie-seats-required">
-                  <div className="seats-required__header">SEATS REQUIRED</div>
-                  <div className="seats-required__content">
-                    <div className="seats-required-desc">
-                      Select number of seats required
+                <div className="movie-ticket-info">
+                  <div className="movie-showtime">
+                    <div className="movie-showtime__header">SHOWTIME</div>
+                    <div className="movie-showtime__details">
+                      <span className="movie-showtime__cinema">
+                        Abc Cinema Palace &#10072;
+                      </span>
+                      <span className="movie-showtime__time">
+                        <span className="date"> Mar 8, 6:00pm</span>
+                      </span>
                     </div>
-                    <Swiper
-                      slidesPerView={5}
-                      navigation={true}
-                      spaceBetween={1}
-                      pagination={{ clickable: true }}
-                      className="seats-carousel"
-                    >
-                      {Array.from(Array(10).keys()).map((n) => (
-                        <SwiperSlide
-                          onClick={() => {
-                            setSelectedSeats([]);
-                            setTotalPrice(0);
-                            setRequiredSeats(n + 1);
-                            setSelectedCategory("");
-                          }}
-                          key={"no" + n}
-                          className={
-                            requiredSeats === n + 1
-                              ? "seat-slide active"
-                              : "seat-slide"
-                          }
-                        >
-                          {n + 1}
-                        </SwiperSlide>
-                      ))}
-                    </Swiper>
+                    <button className="btn btn--sm btn--outlined btn--rounded btn--blue movie-showtime__btn">
+                      Change
+                    </button>
                   </div>
                 </div>
               </div>
+            </div>
+
+            <div className="section">
+              {/* adding here */}
+              <div className="movie-seats-required">
+                <div className="seats-required__header">SEATS REQUIRED</div>
+                <div className="seats-required__content">
+                  <div className="seats-required-desc">
+                    Select number of seats required
+                  </div>
+                  <Swiper
+                    slidesPerView={5}
+                    navigation={true}
+                    spaceBetween={1}
+                    pagination={{ clickable: true }}
+                    className="seats-carousel"
+                  >
+                    {Array.from(Array(10).keys()).map((n) => (
+                      <SwiperSlide
+                        onClick={() => {
+                          setSelectedSeats([]);
+                          setTotalPrice(0);
+                          setRequiredSeats(n + 1);
+                          setSelectedCategory("");
+                        }}
+                        key={"no" + n}
+                        className={
+                          requiredSeats === n + 1
+                            ? "seat-slide active"
+                            : "seat-slide"
+                        }
+                      >
+                        {n + 1}
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                </div>
+              </div>
+              {/* till here */}
             </div>
           </div>
         </div>

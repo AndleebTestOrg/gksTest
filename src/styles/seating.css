@@ -32,6 +32,7 @@
 
 .movie-section {
   display: flex;
+  justify-content: space-between;
   background-color: var(--bg-color-light);
   gap: 3rem;
   width: 100%;
@@ -39,6 +40,11 @@
   padding: var(--main-margin);
   z-index: 2;
   /* height: 30%; */
+}
+
+.section {
+  display: flex;
+  gap: 3rem;
 }
 
 .movie-section__photo {
@@ -95,6 +101,10 @@
 .movie-showtime__btn {
   margin-top: 1rem;
   font-family: var(--font);
+}
+
+.movie-seats-required {
+  padding-top: 2rem;
 }
 
 .seats-required__content {
@@ -284,4 +294,113 @@
 .seat-detail__price {
   color: var(--text-color);
   font-weight: 500;
+}
+
+/* @media (max-width: 1536px) {
+  
+} */
+@media (max-width: 1280px) {
+  .movie-ticket-info {
+    /* flex-direction: column; */
+  }
+  .movie-section__photo {
+    /* width: 160px; */
+    width: 220px;
+    margin-top: -160px;
+    /* margin-top: -50px; */
+    /* margin-bottom: 40px; */
+    margin-bottom: -10px;
+  }
+  .movie-headline {
+    /* margin-top: -110px; */
+    /* padding-bottom: 1.5rem; */
+  }
+
+  .swiper-slide {
+    font-size: 1rem;
+    padding: 0.5rem 0;
+  }
+  .movie-section {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 80px;
+    gap: 1rem;
+  }
+  .movie-seats-required {
+    padding-bottom: 2rem;
+  }
+  .section {
+    width: 500px;
+  }
+  .seats-required__content {
+    width: 500px;
+  }
+}
+@media (max-width: 1024px) {
+  .seat-legends {
+    align-items: flex-start;
+  }
+  .legend {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .legend__name {
+    margin-left: 0;
+    margin-top: 0.8rem;
+    font-size: 0.875rem;
+    text-align: center;
+  }
+  .seat-legend-separator {
+    min-height: 48px;
+  }
+  .legend .seat {
+    width: 24px;
+    height: 24px;
+  }
+}
+@media (max-width: 768px) {
+  .seat {
+    width: 24px;
+    height: 24px;
+  }
+  .category__seats .row .seat-row {
+    gap: 0.5rem;
+  }
+}
+@media (max-width: 640px) {
+  .section {
+    gap: 1rem;
+    width: 400px;
+  }
+  .seats-required__content {
+    width: 400px;
+  }
+  .movie-section__photo {
+    /* width: 160px; */
+    width: 200px;
+    margin-top: -100px;
+    /* margin-top: -50px; */
+    /* margin-bottom: 40px; */
+    margin-bottom: -10px;
+  }
+  .movie-headline {
+    margin-top: -80px;
+    padding-bottom: 1.5rem;
+  }
+  .movie-headline .movie-genre {
+    font-weight: 300;
+    font-size: 1rem;
+  }
+  .movie-headline .movie-title {
+    font-weight: 700;
+    font-size: 2.5rem;
+  }
+  .movie-showtime__details {
+    display: flex;
+    flex-direction: column;
+  }
+  .row-letter {
+    width: 24px;
+    height: 24px;
+  }
 }

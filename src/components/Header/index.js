@@ -54,7 +54,6 @@ export default function Header() {
           <div className="avatar">
             <img src={avatarSrc} alt="" />
           </div>
-          {/* <Svg icon="arrowDownBold" /> */}
         </div>
       </div>
     </header>

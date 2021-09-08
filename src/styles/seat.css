@@ -31,3 +31,15 @@
 .seat.vip.unavailable {
   outline-color: rgba(120, 120, 120, 0.5);
 }
+
+@media (max-width: 768px) {
+  .seat {
+    width: 24px;
+    height: 24px;
+    font-size: 0.75rem;
+    font-weight: 400;
+  }
+  .seat.vip {
+    outline-offset: 1px;
+  }
+}
