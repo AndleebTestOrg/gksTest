@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import avatarSrc from "../../images/avatar.jpeg";
 import Svg from "../Svg";
+import { useScrollData } from "scroll-data-hook";
 
 import "../../styles/header.css";
 
 export default function Header() {
   const [inFocus, setInFocus] = useState(false);
+  const { position } = useScrollData();
+
   return (
-    <header className="header">
+    <header className={position.y === 0 ? "header" : "header bcg"}>
       <div className="header__nav">
-        <Svg icon="arrowLeft" customClass="back-icon" /> <span>BACK</span>
+        <Svg icon="arrowLeft" customClass="back-icon" width={16} height={16} />{" "}
+        <span>BACK</span>
       </div>
       <div className="header__separator"></div>
       <div className="header__breadcrumbs">

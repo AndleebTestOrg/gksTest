@@ -10,6 +10,7 @@
     "react-router-dom": "^6.0.0-beta.3",
     "react-spinners": "^0.11.0",
     "react-tooltip": "^4.2.21",
+    "scroll-data-hook": "^1.0.4",
     "swiper": "^6.8.1"
   },
   "devDependencies": {

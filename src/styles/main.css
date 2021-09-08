@@ -8,6 +8,7 @@
   --bg-color-light: #1d1e22;
   --font: "Roboto", sans-serif;
   --border-radius: 0.4rem;
+  --main-margin: 0 calc((100% - 60%) / 2);
 }
 
 /* border box */
@@ -137,6 +138,7 @@ body {
 }
 .btn.btn--disabled {
   filter: grayscale(0.6);
-  cursor: default;
+  /* cursor: default; */
+  cursor: not-allowed;
   box-shadow: none;
 }
