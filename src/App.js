@@ -1,10 +1,18 @@
 import React from "react";
-import "./css/style.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Seating from "./pages/Seating";
+
+import "./styles/main.css";
 
 export default function App() {
   return (
-    <div>
-      <h1>test</h1>
+    <div className="App">
+      <Router>
+        <Routes>
+          <Route path="/" element={<Seating />} />
+          {/* <Route path="/book" element={<Book />} /> */}
+        </Routes>
+      </Router>
     </div>
   );
 }
