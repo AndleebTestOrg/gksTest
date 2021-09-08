@@ -364,15 +364,17 @@
 @media (max-width: 640px) {
   .section {
     gap: 1rem;
-    width: 400px;
+    /* width: 400px; */
+    width: 360px;
   }
   .seats-required__content {
-    width: 400px;
+    /* width: 400px; */
+    width: 360px;
   }
   .movie-section__photo {
     /* width: 160px; */
-    width: 200px;
-    margin-top: -100px;
+    width: 180px;
+    margin-top: -80px;
     /* margin-top: -50px; */
     /* margin-bottom: 40px; */
     margin-bottom: -10px;
