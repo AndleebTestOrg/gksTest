@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Header from "../../components/Header";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation } from "swiper";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 import moviePhoto from "../../images/movie.jpg";
 
@@ -17,10 +18,16 @@ import getRowLetterHash from "../../utils/getRowLetterHash";
 import theaterSeats from "../../../theaterSeatsData";
 
 export default function Seating() {
-  const [requiredSeats, setRequiredSeats] = useState(1);
-  const [selectedSeats, setSelectedSeats] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [totalPrice, setTotalPrice] = useState(0);
+  const [requiredSeats, setRequiredSeats] = useLocalStorage("requiredSeats", 1);
+  const [selectedSeats, setSelectedSeats] = useLocalStorage(
+    "selectedSeats",
+    []
+  );
+  const [selectedCategory, setSelectedCategory] = useLocalStorage(
+    "selectedCategory",
+    ""
+  );
+  const [totalPrice, setTotalPrice] = useLocalStorage("totalPrice", 0);
 
   //! use useMemo here?
   // const rowLetterHash = getRowLetterHash(theaterSeats);
@@ -46,6 +53,8 @@ export default function Seating() {
     row,
     seatIndex
   ) => {
+    // const isVip = seatCoordinate[0] === "A";
+
     const isSelected = selectedSeats.includes(seatCoordinate);
 
     const requiredSeatsSelected = selectedSeats.length === requiredSeats;
@@ -59,6 +68,8 @@ export default function Seating() {
       requiredSeats !== 1 &&
       !autoCompleteRow.includes(true);
 
+    const adjustedPrice = seatCoordinate[0] === "A" ? price + 200 : price;
+
     if (!seatFilled && !isSelected) {
       if (requiredSeatsSelected && autoCompletePossible) {
         // console.log("--debug- it ran");
@@ -68,11 +79,13 @@ export default function Seating() {
         );
         setSelectedSeats(seatCoordinates);
         setSelectedCategory(category);
-        setTotalPrice(price * requiredSeats);
+        // setTotalPrice(price * requiredSeats);
+        setTotalPrice(adjustedPrice * requiredSeats);
       } else if (requiredSeatsSelected && !autoCompletePossible) {
         setSelectedSeats([seatCoordinate]);
         setSelectedCategory(category);
-        setTotalPrice(price);
+        // setTotalPrice(price);
+        setTotalPrice(adjustedPrice);
       } else if (!isSameCategory && autoCompletePossible) {
         const seatCoordinates = autoCompleteRow.map(
           (_seat, index) =>
@@ -80,18 +93,22 @@ export default function Seating() {
         );
         setSelectedSeats(seatCoordinates);
         setSelectedCategory(category);
-        setTotalPrice(price * requiredSeats);
+        // setTotalPrice(price * requiredSeats);
+        setTotalPrice(adjustedPrice * requiredSeats);
       } else if (!isSameCategory && !autoCompletePossible) {
         setSelectedSeats([seatCoordinate]);
         setSelectedCategory(category);
-        setTotalPrice(price);
+        // setTotalPrice(price);
+        setTotalPrice(adjustedPrice);
       } else {
         setSelectedSeats((prevSeats) => [...prevSeats, seatCoordinate]);
         setSelectedCategory(category);
-        setTotalPrice((prevTotal) => prevTotal + price);
+        // setTotalPrice((prevTotal) => prevTotal + price);
+        setTotalPrice((prevTotal) => prevTotal + adjustedPrice);
       }
     } else if (isSelected) {
-      setTotalPrice((prevTotal) => prevTotal - price);
+      // setTotalPrice((prevTotal) => prevTotal - price);
+      setTotalPrice((prevTotal) => prevTotal - adjustedPrice);
       setSelectedSeats((prevSeats) =>
         prevSeats.filter((seat) => seat !== seatCoordinate)
       );
