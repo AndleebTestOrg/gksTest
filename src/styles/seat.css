@@ -11,6 +11,7 @@
   box-shadow: rgba(9, 9, 119, 0.3) 0px 7px 29px 0px;
   cursor: pointer;
   transition: 0.3s ease;
+  user-select: none;
 }
 .seat.unavailable {
   border-color: rgba(120, 120, 120, 0.5);
@@ -41,5 +42,13 @@
   }
   .seat.vip {
     outline-offset: 1px;
+  }
+}
+
+@media (max-width: 540px) {
+  .seat {
+    width: 18px;
+    height: 18px;
+    font-size: 0.5rem;
   }
 }
